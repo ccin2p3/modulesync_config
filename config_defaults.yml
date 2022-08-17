@@ -115,8 +115,9 @@ CONTRIBUTING.md:
   delete: true
 .yardopts:
   delete: true
-.gitlab-ci.yml:
-  delete: true
+# Used internally at CCIN2P3
+#.gitlab-ci.yml:
+#  delete: true
 .pdkignore:
   delete: true
 appveyor.yml:
