@@ -50,6 +50,12 @@ Rakefile:
   disabled_lint_checks:
     - parameter_documentation
     - parameter_types
+    # CCIN2P3 style
+    - manifest_whitespace_closing_bracket_before
+    - manifest_whitespace_opening_brace_after
+    - manifest_whitespace_opening_brace_before
+    - manifest_whitespace_opening_bracket_after
+    - manifest_whitespace_class_name_single_space_after
   enabled_lint_checks: []
 spec/default_facts.yml:
   delete: true
