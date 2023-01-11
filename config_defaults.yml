@@ -9,10 +9,10 @@
 .github/SECURITY.md:
   delete: true
 .github/workflows/ci.yml:
-  beaker_fact_matrix: {}
   excludes: []
   pidfile_workaround: false
-  timeout_minutes: 40
+  additional_packages: ''
+  acceptance_tests: true
 .travis.yml:
   delete: true
 Jenkinsfile:
