@@ -13,36 +13,37 @@
   pidfile_workaround: false
   additional_packages: ''
   acceptance_tests: true
+# PDK creates this
+.github/workflows/puppet-lint.yml:
+  delete: true
 .travis.yml:
   delete: true
 Jenkinsfile:
   delete: true
 Gemfile:
-  puppet_version: '>= 6.0'
+  puppet_version: '~> 7.24'
   required:
     ':test':
       - gem: voxpupuli-test
-        version: '~> 5.0'
+        version: '~> 6.0'
       - gem: coveralls
       - gem: simplecov-console
       - gem: puppet_metadata
-        version: '~> 1.0'
+        version: '~> 3.0'
     ':development':
       - gem: guard-rake
       - gem: overcommit
         version: '>= 0.39.1'
     ':system_tests':
       - gem: voxpupuli-acceptance
-        version: '~> 1.0'
+        version: '~> 2.0'
     ':release':
       - gem: github_changelog_generator
         version: '>= 1.16.1'
-        ruby-version: '2.5'
-        ruby-operator: '>='
       - gem: voxpupuli-release
-        version: '>= 1.2.0'
-      - gem: puppet-strings
-        version: '>= 2.2'
+        version: '~> 3.0'
+      - gem: faraday-retry
+        version: '~> 2.1'
 Rakefile:
   config.user: ccin2p3
   puppet_strings_patterns: []
@@ -60,6 +61,8 @@ Rakefile:
 spec/default_facts.yml:
   delete: true
 spec/classes/coverage_spec.rb:
+  delete: true
+spec/acceptance/nodesets/default.yml:
   delete: true
 spec/acceptance/nodesets/archlinux-2-x64.yml:
   delete: true
@@ -89,6 +92,16 @@ spec/acceptance/nodesets/fedora-26-x64.yml:
   delete: true
 spec/acceptance/nodesets/fedora-27-x64.yml:
   delete: true
+spec/acceptance/nodesets/debian-7-x64.yml:
+  delete: true
+spec/acceptance/nodesets/debian-8-x64.yml:
+  delete: true
+spec/acceptance/nodesets/sles-11-x64.yml:
+  delete: true
+spec/acceptance/nodesets/sles-12-x64.yml:
+  delete: true
+spec/acceptance/nodesets/ubuntu-1604-x64.yml:
+  delete: true
 spec/acceptance/nodesets/ubuntu-server-1204-x64.yml:
   delete: true
 spec/acceptance/nodesets/ubuntu-server-1404-x64.yml:
@@ -114,9 +127,12 @@ spec/acceptance/nodesets/ec2/ubuntu-1604-x64.yml:
 spec/acceptance/nodesets/ec2/windows-2016-base-x64.yml:
   delete: true
 spec/spec_helper.rb:
+  add_mocked_facts: true
   mock_with: false
 spec/spec_helper_acceptance.rb:
   unmanaged: true
+  configure_beaker:
+    modules: ':metadata'
 CONTRIBUTING.md:
   delete: true
 .yardopts:
@@ -129,6 +145,20 @@ CONTRIBUTING.md:
 appveyor.yml:
   delete: true
 pdk.yaml:
+  delete: true
+.ruby-version:
+  delete: true
+.tool-versions:
+  delete: true
+CODE_OF_CONDUCT.md:
+  delete: true
+.github/CODE_OF_CONDUCT.md:
+  delete: true
+SECURITY.md:
+  delete: true
+.github/SECURITY.md:
+  delete: true
+Modulefile:
   delete: true
 ...
 # vim: syntax=yaml
